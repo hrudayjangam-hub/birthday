@@ -1,0 +1,224 @@
+/* ==================== FADE ANIMATIONS ==================== */
+.fade-in { animation: fadeIn 0.7s ease forwards; }
+.fade-in-down { animation: fadeInDown 0.7s ease forwards; }
+.fade-in-up { animation: fadeInUp 0.7s ease forwards; }
+.fade-in-scale { animation: fadeInScale 0.6s ease forwards; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ==================== HEART PULSE ==================== */
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ==================== HEART BEAT ==================== */
+.beat-heart {
+  animation: heartBeat 1.5s ease infinite;
+}
+
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  56% { transform: scale(1); }
+}
+
+/* ==================== FLOATING ==================== */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+@keyframes floatHeart {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.25; }
+  50% { transform: translateY(-20px) scale(1.15); opacity: 0.45; }
+}
+
+@keyframes floatMiniHeart {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-12px) scale(1.1); opacity: 0.9; }
+}
+
+@keyframes floatSparkle {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.4; }
+  25% { transform: translateY(-12px) rotate(90deg) scale(1.2); opacity: 0.6; }
+  50% { transform: translateY(-6px) rotate(180deg) scale(1); opacity: 0.3; }
+  75% { transform: translateY(-18px) rotate(270deg) scale(1.1); opacity: 0.5; }
+}
+
+@keyframes floatFlower {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+  50% { transform: translateY(-14px) rotate(10deg); opacity: 0.5; }
+}
+
+@keyframes floatCloud {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(calc(100vw + 100%)); }
+}
+
+/* ==================== SHAKE ==================== */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+/* ==================== MODAL ==================== */
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ==================== SLIDE TRANSITIONS ==================== */
+.slide-in-left { animation: slideInLeft 0.6s ease forwards; }
+.slide-in-right { animation: slideInRight 0.6s ease forwards; }
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ==================== RIPPLE ==================== */
+.ripple { position: relative; overflow: hidden; }
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: rippleAnim 0.6s ease-out;
+  pointer-events: none;
+}
+
+@keyframes rippleAnim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ==================== GALLERY GRID ==================== */
+.gallery-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.gallery-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================== TYPING CURSOR ==================== */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ==================== CONFETTI ==================== */
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  z-index: 60;
+  animation: confettiFall linear forwards;
+  pointer-events: none;
+}
+
+@keyframes confettiFall {
+  0% { opacity: 1; transform: translateY(-10px) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+}
+
+/* ==================== HEART RAIN ==================== */
+.heart-rain-piece {
+  position: fixed;
+  font-size: 20px;
+  z-index: 3;
+  animation: heartRain linear forwards;
+  pointer-events: none;
+}
+
+@keyframes heartRain {
+  0% { opacity: 1; transform: translateY(-20px) scale(1); }
+  100% { opacity: 0; transform: translateY(100vh) scale(0.3); }
+}
+
+/* ==================== SPINNER ==================== */
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ==================== POPUP BOUNCE ==================== */
+@keyframes popupBounce {
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { opacity: 1; transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* ==================== CARD FLOAT IN ==================== */
+@keyframes cardFloatIn {
+  0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==================== GLOW PULSE ==================== */
+.glow-pulse {
+  animation: btnGlowPulse 2s ease infinite;
+}
+
+@keyframes btnGlowPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(248, 165, 194, 0.4); }
+  50% { box-shadow: 0 4px 30px rgba(248, 165, 194, 0.6), 0 0 50px rgba(248, 165, 194, 0.2); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(255, 107, 157, 0.4); }
+  50% { box-shadow: 0 4px 30px rgba(255, 107, 157, 0.6), 0 0 40px rgba(255, 107, 157, 0.2); }
+}
+
+/* ==================== BOX POP ==================== */
+@keyframes boxPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* ==================== LETTER SLIDE IN ==================== */
+@keyframes letterSlideIn {
+  0% { opacity: 0; transform: translateY(40px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==================== HEART BURST ==================== */
+.heart-burst-piece {
+  position: fixed;
+  pointer-events: none;
+  z-index: 60;
+  font-size: 20px;
+  animation: heartBurst linear forwards;
+}
+
+@keyframes heartBurst {
+  0% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
+  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3) rotate(360deg); }
+}

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="description" content="A love story made with care">
+  <meta name="theme-color" content="#f8a5c2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Our Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Quicksand:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ==================== LOADING SCREEN ==================== -->
+  <section id="loading-screen" class="page active">
+    <div class="loading-container">
+      <div class="loading-emoji beat-heart">&#x1F49D;</div>
+      <div class="loading-bar">
+        <div class="loading-fill"></div>
+      </div>
+      <p class="loading-text">Wrapping a little surprise for you...</p>
+    </div>
+  </section>
+
+  <!-- ==================== WELCOME PAGE ==================== -->
+  <section id="welcome-screen" class="page">
+    <div class="floating-bg">
+      <div class="floating-heart" style="left:5%;top:15%;font-size:20px">&#x2764;</div>
+      <div class="floating-heart" style="left:20%;top:65%;font-size:14px">&#x2764;</div>
+      <div class="floating-heart" style="left:45%;top:10%;font-size:22px">&#x2764;</div>
+      <div class="floating-heart" style="left:65%;top:55%;font-size:16px">&#x2764;</div>
+      <div class="floating-heart" style="left:85%;top:25%;font-size:18px">&#x2764;</div>
+      <div class="floating-heart" style="left:35%;top:80%;font-size:12px">&#x2764;</div>
+      <div class="floating-heart" style="left:75%;top:75%;font-size:15px">&#x2764;</div>
+      <div class="floating-heart" style="left:92%;top:40%;font-size:10px">&#x2764;</div>
+      <div class="floating-sparkle" style="left:10%;top:30%">&#x2728;</div>
+      <div class="floating-sparkle" style="left:55%;top:45%">&#x2728;</div>
+      <div class="floating-sparkle" style="left:80%;top:15%">&#x2728;</div>
+      <div class="floating-sparkle" style="left:30%;top:60%">&#x2728;</div>
+      <div class="floating-flower" style="left:15%;top:70%;font-size:24px">&#x1F33C;</div>
+      <div class="floating-flower" style="left:75%;top:20%;font-size:20px">&#x1F33B;</div>
+      <div class="floating-flower" style="left:50%;top:85%;font-size:18px">&#x1F490;</div>
+    </div>
+    <div class="page-svg-anim">
+        <img src="assets/animations/welcome.svg" alt="" class="svg-character" loading="lazy">
+      </div>
+      <div class="welcome-content fade-in-down">
+        <div class="heart-photo-wrapper">
+        <div class="heart-photo" id="heart-photo">
+          <img src="https://picsum.photos/seed/heartphoto/300/300" alt="Heart" id="heart-img">
+          <div class="heart-glow"></div>
+        </div>
+        <div class="floating-mini-heart" style="left: -15px; top: 10%; animation-delay: 0s">&#x2764;</div>
+        <div class="floating-mini-heart" style="right: -15px; top: 30%; animation-delay: 1s">&#x2764;</div>
+        <div class="floating-mini-heart" style="left: -10px; bottom: 20%; animation-delay: 2s">&#x2764;</div>
+        <div class="floating-mini-heart" style="right: -10px; bottom: 10%; animation-delay: 0.5s">&#x2764;</div>
+      </div>
+      <h2 class="welcome-greeting">Hi &#x1F338;</h2>
+      <p class="welcome-message">I made something special just for you.</p>
+      <button id="start-btn" class="btn btn-love glow-pulse ripple">&#x2728; Start Journey</button>
+    </div>
+  </section>
+
+  <!-- ==================== QUESTION PAGE ==================== -->
+  <section id="question-page" class="page">
+    <div class="floating-bg">
+      <div class="floating-heart" style="left:8%;top:20%">&#x2764;</div>
+      <div class="floating-heart" style="left:30%;top:70%">&#x2764;</div>
+      <div class="floating-heart" style="left:55%;top:15%">&#x2764;</div>
+      <div class="floating-heart" style="left:78%;top:60%">&#x2764;</div>
+      <div class="floating-heart" style="left:90%;top:35%">&#x2764;</div>
+      <div class="floating-sparkle" style="left:15%;top:40%">&#x2728;</div>
+      <div class="floating-sparkle" style="left:50%;top:80%">&#x2728;</div>
+      <div class="floating-sparkle" style="left:70%;top:10%">&#x2728;</div>
+      <div class="floating-sparkle" style="left:85%;top:50%">&#x2728;</div>
+    </div>
+    <div class="page-svg-anim">
+        <img src="assets/animations/question1-yes.svg" alt="" class="svg-character" loading="lazy">
+      </div>
+      <div class="question-container">
+        <div class="question-card" id="question-card">
+        <div class="question-emoji" id="question-emoji">&#x1F498;</div>
+        <h2 class="question-text" id="question-text">Loading...</h2>
+        <div class="question-buttons">
+          <button class="btn btn-yes ripple" id="btn-yes">
+            <span class="btn-icon">&#x2764;&#xFE0F;</span> Yes
+          </button>
+          <button class="btn btn-no" id="btn-no">
+            <span class="btn-icon">&#x1F90D;</span> No
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="popup-overlay" id="popup-overlay">
+      <div class="popup-card" id="popup-card">
+        <div class="popup-emoji" id="popup-emoji">&#x1F97A;</div>
+        <p class="popup-text" id="popup-text">Really...?</p>
+        <div class="popup-buttons" id="popup-buttons">
+          <button class="btn btn-yes btn-small ripple" id="popup-yes">&#x2764;&#xFE0F; Let me see</button>
+          <button class="btn btn-no btn-small" id="popup-no">&#x1F90D; Not now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PASSWORD PAGE (6-DIGIT) ==================== -->
+  <section id="passcode-screen" class="page">
+    <div class="page-svg-anim">
+        <img src="assets/animations/password.svg" alt="" class="svg-character" loading="lazy">
+      </div>
+      <div class="passcode-container fade-in-scale">
+        <div class="passcode-lock">&#x1F49D;</div>
+      <h2 class="passcode-title">Secret Password</h2>
+      <p class="passcode-hint">Enter the 6-digit code to unlock your surprise</p>
+      <div class="passcode-boxes" id="passcode-boxes">
+        <span class="pbox" data-index="0"></span>
+        <span class="pbox" data-index="1"></span>
+        <span class="pbox" data-index="2"></span>
+        <span class="pbox" data-index="3"></span>
+        <span class="pbox" data-index="4"></span>
+        <span class="pbox" data-index="5"></span>
+      </div>
+      <div class="passcode-error" id="passcode-error"></div>
+      <div class="keypad">
+        <button class="key" data-value="1">1</button>
+        <button class="key" data-value="2">2</button>
+        <button class="key" data-value="3">3</button>
+        <button class="key" data-value="4">4</button>
+        <button class="key" data-value="5">5</button>
+        <button class="key" data-value="6">6</button>
+        <button class="key" data-value="7">7</button>
+        <button class="key" data-value="8">8</button>
+        <button class="key" data-value="9">9</button>
+        <button class="key key-clear" data-value="clear">&#x232B;</button>
+        <button class="key" data-value="0">0</button>
+        <button class="key key-enter" data-value="enter">&#x23CE;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== GALLERY (HEART SHAPED) ==================== -->
+  <section id="gallery-page" class="page">
+    <div class="floating-bg">
+      <div class="floating-heart" style="left:5%;top:15%;font-size:18px">&#x2764;</div>
+      <div class="floating-heart" style="left:92%;top:30%;font-size:14px">&#x2764;</div>
+      <div class="floating-heart" style="left:50%;top:80%;font-size:16px">&#x2764;</div>
+      <div class="floating-heart" style="left:20%;top:50%;font-size:12px">&#x2764;</div>
+      <div class="floating-heart" style="left:78%;top:65%;font-size:10px">&#x2764;</div>
+      <div class="floating-sparkle" style="left:12%;top:25%;font-size:16px">&#x2728;</div>
+      <div class="floating-sparkle" style="left:70%;top:12%;font-size:14px">&#x2728;</div>
+      <div class="floating-sparkle" style="left:85%;top:50%;font-size:18px">&#x2728;</div>
+      <div class="floating-flower" style="left:8%;top:70%;font-size:22px">&#x1F33C;</div>
+      <div class="floating-flower" style="left:88%;top:80%;font-size:18px">&#x1F490;</div>
+    </div>
+    <div class="page-svg-anim">
+        <img src="assets/animations/gallery.svg" alt="" class="svg-character" loading="lazy">
+      </div>
+      <div class="page-header">
+        <h2 class="page-title gradient-text">Our Gallery</h2>
+        <p class="page-subtitle">Three heartbeats, one story &#x2728;</p>
+      </div>
+      <div class="heart-gallery" id="heart-gallery">
+      <div class="heart-image-wrapper heart-top-left" data-index="0">
+        <div class="heart-image">
+          <img src="" alt="Memory 1" id="heart-img-0" loading="lazy">
+        </div>
+        <div class="heart-glow"></div>
+        <div class="mini-heart" style="left:-10px;top:20%;animation-delay:0s">&#x2764;</div>
+        <div class="mini-heart" style="right:-10px;top:50%;animation-delay:0.8s">&#x2764;</div>
+      </div>
+      <div class="heart-image-wrapper heart-top-right" data-index="1">
+        <div class="heart-image">
+          <img src="" alt="Memory 2" id="heart-img-1" loading="lazy">
+        </div>
+        <div class="heart-glow"></div>
+        <div class="mini-heart" style="left:-10px;top:30%;animation-delay:0.4s">&#x2764;</div>
+        <div class="mini-heart" style="right:-10px;top:60%;animation-delay:1.2s">&#x2764;</div>
+      </div>
+      <div class="heart-image-wrapper heart-bottom" data-index="2">
+        <div class="heart-image">
+          <img src="" alt="Memory 3" id="heart-img-2" loading="lazy">
+        </div>
+        <div class="heart-glow"></div>
+        <div class="mini-heart" style="left:-8px;top:40%;animation-delay:0.6s">&#x2764;</div>
+        <div class="mini-heart" style="right:-8px;top:20%;animation-delay:1.5s">&#x2764;</div>
+      </div>
+    </div>
+    <button id="gallery-next-btn" class="btn btn-love ripple" style="display:none">Read a Letter &#x1F48C;</button>
+    <div id="gallery-modal" class="modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <button class="modal-nav modal-prev">&#8249;</button>
+        <div class="modal-body">
+          <img src="" alt="Gallery" class="modal-image" id="modal-image">
+          <p class="modal-caption" id="modal-caption"></p>
+        </div>
+        <button class="modal-nav modal-next">&#8250;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LETTER (ENVELOPE) ==================== -->
+  <section id="letter-page" class="page">
+    <div class="page-svg-anim">
+        <img src="assets/animations/letter.svg" alt="" class="svg-character" loading="lazy">
+      </div>
+      <div class="letter-wrapper fade-in-scale">
+        <div class="envelope" id="envelope">
+        <div class="envelope-flap" id="envelope-flap">
+          <div class="envelope-wax">&#x1F48C;</div>
+        </div>
+        <div class="envelope-body">
+          <div class="envelope-heart">&#x2764;</div>
+        </div>
+      </div>
+      <p class="envelope-hint">Click the envelope to open your letter &#x2728;</p>
+      <div class="letter-paper-slide" id="letter-paper-slide" style="display:none">
+        <div class="letter-paper-inner">
+          <div class="letter-stamp">&#x1F49D;</div>
+          <h2 class="letter-title gradient-text" id="letter-title">A Letter For You</h2>
+          <div class="letter-content" id="letter-content"></div>
+        </div>
+        <button id="letter-next-btn" class="btn btn-love ripple" style="display:none">Open Your Gift &#x1F381;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SURPRISE GIFT ==================== -->
+  <section id="surprise-page" class="page">
+    <div class="page-svg-anim">
+        <img src="assets/animations/surprise.svg" alt="" class="svg-character" loading="lazy">
+      </div>
+      <div class="surprise-container fade-in-scale">
+        <h2 class="surprise-title gradient-text">A Surprise Just for You</h2>
+      <p class="surprise-hint">Click the gift box to open your surprise!</p>
+      <div class="gift-box" id="gift-box">
+        <div class="gift-lid">
+          <div class="gift-ribbon ribbon-h"></div>
+          <div class="gift-ribbon ribbon-v"></div>
+          <div class="gift-bow"></div>
+        </div>
+        <div class="gift-body">
+          <div class="gift-ribbon ribbon-h"></div>
+          <div class="gift-ribbon ribbon-v"></div>
+        </div>
+      </div>
+      <div class="surprise-reveal" id="surprise-reveal" style="display:none">
+        <div class="surprise-card">
+          <div class="surprise-emoji">&#x1F31F;</div>
+          <h3 class="surprise-subtitle">You are truly special</h3>
+          <p class="surprise-message">This is just the beginning. Every moment with you is a treasure I hold close to my heart.</p>
+        </div>
+      </div>
+    </div>
+    <div id="confetti-container"></div>
+  </section>
+
+  <!-- ==================== FINAL PAGE ==================== -->
+  <section id="final-page" class="page">
+    <div class="page-svg-anim">
+        <img src="assets/animations/final.svg" alt="" class="svg-character" loading="lazy">
+      </div>
+      <div class="final-container fade-in-down">
+        <div class="final-emoji">&#x1F496;</div>
+      <h1 class="final-title gradient-text">Thank You</h1>
+      <p class="final-message">For being exactly who you are</p>
+      <p class="final-submessage">You make the world more beautiful just by being in it. This was made with love, just for you.</p>
+      <div class="final-hearts">
+        <span>&#x2764;</span>
+        <span>&#x1F49B;</span>
+        <span>&#x2764;</span>
+      </div>
+      <button id="restart-btn" class="btn btn-love glow-pulse ripple">&#x2728; Experience Again</button>
+    </div>
+    <div id="heart-rain-container"></div>
+  </section>
+
+  <script src="js/config.js"></script>
+  <script src="js/pages.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

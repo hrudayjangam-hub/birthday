@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <style>
+    @keyframes waveArm {
+      0%, 100% { transform: rotate(-15deg); transform-origin: 110px 160px; }
+      50% { transform: rotate(10deg); transform-origin: 110px 160px; }
+    }
+    @keyframes floatGift {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes blink {
+      0%, 95%, 100% { opacity: 1; }
+      97% { opacity: 0; }
+    }
+    @keyframes glowHeart {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
+    @keyframes bobHead {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    @keyframes floatingHearts {
+      0% { opacity: 0; transform: translateY(0) scale(0.5); }
+      30% { opacity: 0.7; transform: translateY(-10px) scale(1); }
+      70% { opacity: 0.5; transform: translateY(-25px) scale(0.8); }
+      100% { opacity: 0; transform: translateY(-40px) scale(0.3); }
+    }
+    .arm-wave { animation: waveArm 1.2s ease infinite; }
+    .gift-box { animation: floatGift 2s ease infinite; }
+    .eye { animation: blink 3s ease infinite; }
+    .head-group { animation: bobHead 2.5s ease infinite; }
+    .heart-particle { animation: floatingHearts 3s ease infinite; }
+    .glow { animation: glowHeart 2s ease infinite; }
+  </style>
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff8f0" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#fce4ec" stop-opacity="0.2"/>
+    </radialGradient>
+  </defs>
+  <rect width="200" height="200" rx="100" fill="url(#bgGrad)"/>
+  <g class="head-group">
+    <ellipse cx="78" cy="50" rx="12" ry="8" fill="#FFB8A0" opacity="0.5"/>
+    <circle cx="100" cy="95" r="35" fill="#FFE4D6"/>
+    <path d="M70 85 Q72 82 75 85" stroke="#D4A5F5" stroke-width="2" fill="none"/>
+    <path d="M125 85 Q128 82 130 85" stroke="#D4A5F5" stroke-width="2" fill="none"/>
+    <circle cx="88" cy="90" r="3" fill="#5D4037" class="eye"/>
+    <circle cx="112" cy="90" r="3" fill="#5D4037" class="eye"/>
+    <path d="M95 100 Q100 106 105 100" stroke="#E883AE" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <circle cx="82" cy="98" r="4" fill="#FFB8A0" opacity="0.6"/>
+    <circle cx="118" cy="98" r="4" fill="#FFB8A0" opacity="0.6"/>
+    <path d="M70 70 Q100 55 130 70 Q135 65 130 60 Q100 48 70 60 Q65 65 70 70Z" fill="#6B4226"/>
+    <path d="M85 60 Q100 50 115 60" fill="#6B4226"/>
+  </g>
+  <rect x="72" y="125" width="56" height="50" rx="14" fill="#D4A5F5"/>
+  <rect x="62" y="125" width="76" height="14" rx="7" fill="#C8B6FF"/>
+  <rect x="70" y="168" width="16" height="32" rx="6" fill="#FFE4D6"/>
+  <rect x="114" y="168" width="16" height="32" rx="6" fill="#FFE4D6"/>
+  <rect x="66" y="170" width="12" height="28" rx="5" fill="#F0D0C0"/>
+  <rect x="122" y="170" width="12" height="28" rx="5" fill="#F0D0C0"/>
+  <g class="arm-wave">
+    <rect x="124" y="130" width="14" height="36" rx="7" fill="#FFE4D6" transform="rotate(-15 130 160)"/>
+  </g>
+  <rect x="62" y="132" width="14" height="36" rx="7" fill="#FFE4D6"/>
+  <g class="gift-box">
+    <rect x="128" y="130" width="28" height="22" rx="4" fill="#F8A5C2" transform="rotate(15 142 141)"/>
+    <rect x="128" y="130" width="28" height="5" rx="2" fill="#FFF" transform="rotate(15 142 141)"/>
+    <rect x="140" y="130" width="4" height="22" rx="2" fill="#FFF" transform="rotate(15 142 141)"/>
+    <circle cx="142" cy="130" r="4" fill="#FFF" transform="rotate(15 142 141)"/>
+  </g>
+  <path d="M100 15 Q105 10 110 15 Q115 10 120 15" stroke="#F8A5C2" stroke-width="2" fill="none" class="glow"/>
+  <text x="30" y="28" font-size="10" fill="#F8A5C2" opacity="0.4" class="heart-particle">&#x2764;</text>
+  <text x="155" y="35" font-size="8" fill="#D4A5F5" opacity="0.3" class="heart-particle" style="animation-delay:0.8s">&#x2764;</text>
+  <text x="25" y="50" font-size="7" fill="#F8A5C2" opacity="0.3" class="heart-particle" style="animation-delay:1.5s">&#x2764;</text>
+  <text x="170" y="60" font-size="9" fill="#D4A5F5" opacity="0.4" class="heart-particle" style="animation-delay:0.5s">&#x2764;</text>
+</svg>

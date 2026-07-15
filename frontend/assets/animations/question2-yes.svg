@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" width="100%" height="100%">
+  <style>
+    @keyframes walk { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+    @keyframes blink { 0%,95%,100%{opacity:1} 97%{opacity:0} }
+    @keyframes doorGlow { 0%,100%{opacity:0.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.05)} }
+    @keyframes sparkle { 0%,100%{opacity:0;transform:scale(0.5)rotate(0deg)} 50%{opacity:0.9;transform:scale(1.3)rotate(30deg)} }
+    @keyframes heartFloat { 0%{opacity:0;transform:translateY(0)scale(0.5)} 50%{opacity:0.8;transform:translateY(-12px)scale(1)} 100%{opacity:0;transform:translateY(-30px)scale(0.3)} }
+    .walk { animation: walk 1.5s ease infinite; }
+    .eye { animation: blink 3s ease infinite; }
+    .door-glow { animation: doorGlow 2s ease infinite; transform-origin:220px 100px; }
+    .sparkle { animation: sparkle 1.5s ease infinite; }
+    .heart-p { animation: heartFloat 2s ease infinite; }
+  </style>
+  <rect width="240" height="200" rx="100" fill="#fff8f0" opacity="0.3"/>
+  <path d="M200 50 L210 45 L220 50 L220 160 L200 160Z" fill="#F8A5C2" opacity="0.3" class="door-glow"/>
+  <path d="M205 55 L210 52 L215 55 L215 155 L205 155Z" fill="#FFF" opacity="0.5" class="door-glow"/>
+  <path d="M210 70 Q210 80 220 85" stroke="#FFF" stroke-width="1.5" fill="none" opacity="0.6" class="door-glow"/>
+  <circle cx="210" cy="100" r="10" fill="#FFF" opacity="0.4" class="door-glow"/>
+  <path d="M210 90 L210 110 M200 100 L220 100" stroke="#FFF" stroke-width="1.5" fill="none" opacity="0.5" class="door-glow"/>
+  <text x="225" y="55" font-size="8" fill="#FFF" opacity="0" class="sparkle">&#x2728;</text>
+  <text x="195" y="40" font-size="6" fill="#FFF" opacity="0" class="sparkle" style="animation-delay:0.5s">&#x2728;</text>
+  <text x="230" y="80" font-size="7" fill="#FFF" opacity="0" class="sparkle" style="animation-delay:1s">&#x2728;</text>
+  <g class="walk">
+    <ellipse cx="55" cy="52" rx="10" ry="7" fill="#FFB8A0" opacity="0.5"/>
+    <circle cx="75" cy="92" r="30" fill="#FFE4D6"/>
+    <path d="M50 84 Q52 81 55 84" stroke="#D4A5F5" stroke-width="1.5" fill="none"/>
+    <path d="M96 84 Q98 81 101 84" stroke="#D4A5F5" stroke-width="1.5" fill="none"/>
+    <circle cx="66" cy="88" r="2.5" fill="#5D4037" class="eye"/>
+    <circle cx="85" cy="88" r="2.5" fill="#5D4037" class="eye"/>
+    <path d="M72 97 Q75.5 102 79 97" stroke="#E883AE" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <circle cx="60" cy="94" r="3.5" fill="#FFB8A0" opacity="0.6"/>
+    <circle cx="91" cy="94" r="3.5" fill="#FFB8A0" opacity="0.6"/>
+    <path d="M52 73 Q75 60 98 73 Q102 69 98 64 Q75 54 52 64 Q48 69 52 73Z" fill="#6B4226"/>
+  </g>
+  <rect x="52" y="122" width="46" height="42" rx="11" fill="#D4A5F5"/>
+  <rect x="46" y="122" width="58" height="11" rx="5" fill="#C8B6FF"/>
+  <rect x="54" y="160" width="13" height="28" rx="5" fill="#FFE4D6"/>
+  <rect x="84" y="160" width="13" height="28" rx="5" fill="#FFE4D6"/>
+  <rect x="44" y="126" width="11" height="30" rx="5" fill="#FFE4D6"/>
+  <rect x="92" y="126" width="11" height="30" rx="5" fill="#FFE4D6"/>
+  <g class="walk" style="animation-delay:0.2s">
+    <ellipse cx="125" cy="52" rx="10" ry="7" fill="#FFB8A0" opacity="0.5"/>
+    <circle cx="115" cy="92" r="28" fill="#FFE4D6"/>
+    <path d="M97 84 Q99 81 102 84" stroke="#D4A5F5" stroke-width="1.5" fill="none"/>
+    <path d="M128 84 Q130 81 133 84" stroke="#D4A5F5" stroke-width="1.5" fill="none"/>
+    <circle cx="108" cy="88" r="2.5" fill="#5D4037" class="eye"/>
+    <circle cx="123" cy="88" r="2.5" fill="#5D4037" class="eye"/>
+    <path d="M113 96 Q116 100 119 96" stroke="#E883AE" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <circle cx="104" cy="93" r="3.5" fill="#FFB8A0" opacity="0.6"/>
+    <circle cx="128" cy="93" r="3.5" fill="#FFB8A0" opacity="0.6"/>
+    <path d="M98 72 Q115 60 132 72 Q136 68 132 63 Q115 53 98 63 Q94 68 98 72Z" fill="#8B4513"/>
+    <ellipse cx="115" cy="76" rx="10" ry="4" fill="#F8A5C2"/>
+  </g>
+  <rect x="100" y="122" width="40" height="42" rx="11" fill="#F8A5C2"/>
+  <rect x="94" y="122" width="52" height="11" rx="5" fill="#FFD6E0"/>
+  <rect x="102" y="160" width="11" height="28" rx="5" fill="#FFE4D6"/>
+  <rect x="127" y="160" width="11" height="28" rx="5" fill="#FFE4D6"/>
+  <rect x="96" y="126" width="10" height="30" rx="5" fill="#FFE4D6"/>
+  <rect x="134" y="126" width="10" height="30" rx="5" fill="#FFE4D6"/>
+  <text x="30" y="20" font-size="10" fill="#F8A5C2" opacity="0" class="heart-p">&#x2764;</text>
+  <text x="140" y="18" font-size="8" fill="#D4A5F5" opacity="0" class="heart-p" style="animation-delay:0.7s">&#x2764;</text>
+  <text x="60" y="12" font-size="7" fill="#F8A5C2" opacity="0" class="heart-p" style="animation-delay:1.3s">&#x2764;</text>
+</svg>

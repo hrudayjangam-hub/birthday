@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" width="100%" height="100%">
+  <style>
+    @keyframes blink { 0%,95%,100%{opacity:1} 97%{opacity:0} }
+    @keyframes bobHead { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+    @keyframes floatPhoto { 0%,100%{transform:translateY(0) rotate(0deg) scale(1)} 50%{transform:translateY(-8px) rotate(5deg) scale(1.05)} }
+    @keyframes heartFloat { 0%{opacity:0;transform:translateY(0)scale(0.5)} 40%{opacity:0.6;transform:translateY(-15px)scale(1)} 100%{opacity:0;transform:translateY(-35px)scale(0.3)} }
+    .eye { animation: blink 3s ease infinite; }
+    .head-bob { animation: bobHead 2.5s ease infinite; }
+    .float-photo { animation: floatPhoto 3s ease infinite; }
+    .float-photo2 { animation: floatPhoto 3.5s ease infinite; animation-delay: 0.5s; }
+    .float-photo3 { animation: floatPhoto 4s ease infinite; animation-delay: 1s; }
+    .heart-p { animation: heartFloat 3s ease infinite; }
+  </style>
+  <rect width="240" height="200" rx="100" fill="#fff8f0" opacity="0.4"/>
+  <rect x="75" y="155" width="90" height="8" rx="4" fill="#E0D0C0" opacity="0.3"/>
+  <g class="head-bob">
+    <ellipse cx="75" cy="58" rx="9" ry="6" fill="#FFB8A0" opacity="0.5"/>
+    <circle cx="90" cy="95" r="28" fill="#FFE4D6"/>
+    <path d="M70 88 Q72 85 75 88" stroke="#D4A5F5" stroke-width="1.5" fill="none"/>
+    <path d="M108 88 Q110 85 113 88" stroke="#D4A5F5" stroke-width="1.5" fill="none"/>
+    <circle cx="82" cy="92" r="2.5" fill="#5D4037" class="eye"/>
+    <circle cx="99" cy="92" r="2.5" fill="#5D4037" class="eye"/>
+    <path d="M88 100 Q91 104 94 100" stroke="#E883AE" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <circle cx="76" cy="97" r="3.5" fill="#FFB8A0" opacity="0.6"/>
+    <circle cx="105" cy="97" r="3.5" fill="#FFB8A0" opacity="0.6"/>
+    <path d="M67 76 Q90 64 113 76 Q117 72 113 67 Q90 58 67 67 Q63 72 67 76Z" fill="#6B4226"/>
+  </g>
+  <rect x="68" y="120" width="44" height="38" rx="10" fill="#D4A5F5"/>
+  <rect x="62" y="120" width="56" height="10" rx="5" fill="#C8B6FF"/>
+  <rect x="69" y="155" width="12" height="26" rx="5" fill="#FFE4D6"/>
+  <rect x="96" y="155" width="12" height="26" rx="5" fill="#FFE4D6"/>
+  <rect x="60" y="124" width="10" height="28" rx="5" fill="#FFE4D6"/>
+  <rect x="106" y="124" width="10" height="28" rx="5" fill="#FFE4D6"/>
+  <g class="head-bob" style="animation-delay:0.3s">
+    <ellipse cx="155" cy="58" rx="9" ry="6" fill="#FFB8A0" opacity="0.5"/>
+    <circle cx="148" cy="95" r="26" fill="#FFE4D6"/>
+    <path d="M132 88 Q134 85 137 88" stroke="#D4A5F5" stroke-width="1.5" fill="none"/>
+    <path d="M158 88 Q160 85 163 88" stroke="#D4A5F5" stroke-width="1.5" fill="none"/>
+    <circle cx="141" cy="92" r="2.5" fill="#5D4037" class="eye"/>
+    <circle cx="156" cy="92" r="2.5" fill="#5D4037" class="eye"/>
+    <path d="M146 99 Q149 103 152 99" stroke="#E883AE" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <circle cx="137" cy="96" r="3.5" fill="#FFB8A0" opacity="0.6"/>
+    <circle cx="161" cy="96" r="3.5" fill="#FFB8A0" opacity="0.6"/>
+    <path d="M133 77 Q148 66 163 77 Q167 73 163 68 Q148 59 133 68 Q129 73 133 77Z" fill="#8B4513"/>
+    <ellipse cx="148" cy="80" rx="9" ry="3.5" fill="#F8A5C2"/>
+  </g>
+  <rect x="133" y="120" width="38" height="38" rx="10" fill="#F8A5C2"/>
+  <rect x="127" y="120" width="50" height="10" rx="5" fill="#FFD6E0"/>
+  <rect x="134" y="155" width="11" height="26" rx="5" fill="#FFE4D6"/>
+  <rect x="158" y="155" width="11" height="26" rx="5" fill="#FFE4D6"/>
+  <rect x="128" y="124" width="10" height="28" rx="5" fill="#FFE4D6"/>
+  <rect x="165" y="124" width="10" height="28" rx="5" fill="#FFE4D6"/>
+  <rect x="8" y="30" width="36" height="30" rx="6" fill="#F8A5C2" opacity="0.7" class="float-photo"/>
+  <rect x="12" y="34" width="28" height="22" rx="4" fill="#FFF" opacity="0.5" class="float-photo"/>
+  <rect x="190" y="25" width="36" height="30" rx="6" fill="#D4A5F5" opacity="0.6" class="float-photo2"/>
+  <rect x="194" y="29" width="28" height="22" rx="4" fill="#FFF" opacity="0.4" class="float-photo2"/>
+  <rect x="100" y="15" width="32" height="26" rx="6" fill="#FFD6E0" opacity="0.7" class="float-photo3"/>
+  <rect x="104" y="19" width="24" height="18" rx="4" fill="#FFF" opacity="0.5" class="float-photo3"/>
+  <text x="18" y="50" font-size="7" fill="#F8A5C2" opacity="0" class="heart-p" style="animation-delay:0.3s">&#x2764;</text>
+  <text x="205" y="42" font-size="6" fill="#D4A5F5" opacity="0" class="heart-p" style="animation-delay:0.9s">&#x2764;</text>
+  <text x="110" y="30" font-size="6" fill="#F8A5C2" opacity="0" class="heart-p" style="animation-delay:1.5s">&#x2764;</text>
+</svg>
