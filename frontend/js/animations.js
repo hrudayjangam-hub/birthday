@@ -1,4 +1,9 @@
 const Animations = {
+  audioCtx: null,
+  musicGain: null,
+  musicPlaying: false,
+  musicOscillators: [],
+
   ripple(e) {
     const btn = e.currentTarget;
     const rect = btn.getBoundingClientRect();
@@ -12,6 +17,176 @@ const Animations = {
     ripple.style.top = `${y}px`;
     btn.appendChild(ripple);
     ripple.addEventListener('animationend', () => ripple.remove());
+  },
+
+  getAudioCtx() {
+    if (!this.audioCtx) {
+      this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      this.musicGain = this.audioCtx.createGain();
+      this.musicGain.gain.value = 0.08;
+      this.musicGain.connect(this.audioCtx.destination);
+    }
+    if (this.audioCtx.state === 'suspended') {
+      this.audioCtx.resume();
+    }
+    return this.audioCtx;
+  },
+
+  playChime(freq = 523.25, duration = 0.3, vol = 0.15) {
+    try {
+      const ctx = this.getAudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(vol, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + duration);
+    } catch (e) { /* silent */ }
+  },
+
+  playHappySound() {
+    this.playChime(523.25, 0.15, 0.12);
+    setTimeout(() => this.playChime(659.25, 0.15, 0.12), 120);
+    setTimeout(() => this.playChime(783.99, 0.3, 0.12), 240);
+  },
+
+  playLockSound() {
+    try {
+      const ctx = this.getAudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(800, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.1);
+      osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.2);
+      gain.gain.setValueAtTime(0.12, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.3);
+    } catch (e) { /* silent */ }
+  },
+
+  playUnlockSound() {
+    try {
+      const ctx = this.getAudioCtx();
+      [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
+        setTimeout(() => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          gain.gain.setValueAtTime(0.1, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.3);
+        }, i * 80);
+      });
+    } catch (e) { /* silent */ }
+  },
+
+  playEnvelopeSound() {
+    try {
+      const ctx = this.getAudioCtx();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(300, ctx.currentTime);
+      osc.frequency.linearRampToValueAtTime(600, ctx.currentTime + 0.15);
+      gain.gain.setValueAtTime(0.08, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.2);
+      setTimeout(() => {
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.type = 'triangle';
+        osc2.frequency.value = 440;
+        gain2.gain.setValueAtTime(0.06, ctx.currentTime);
+        gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.start();
+        osc2.stop(ctx.currentTime + 0.15);
+      }, 200);
+    } catch (e) { /* silent */ }
+  },
+
+  playGiftSound() {
+    try {
+      const ctx = this.getAudioCtx();
+      [440, 554.37, 659.25, 880, 1046.5].forEach((freq, i) => {
+        setTimeout(() => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = i % 2 === 0 ? 'sine' : 'triangle';
+          osc.frequency.value = freq;
+          gain.gain.setValueAtTime(0.1, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.4);
+        }, i * 100);
+      });
+    } catch (e) { /* silent */ }
+  },
+
+  startMusic() {
+    if (this.musicPlaying) return;
+    this.musicPlaying = true;
+    try {
+      const ctx = this.getAudioCtx();
+      const notes = [261.63, 329.63, 392, 523.25, 392, 329.63, 261.63, 329.63, 392, 523.25, 659.25, 523.25, 392, 329.63, 261.63, 293.66, 349.23, 440, 349.23, 293.66, 261.63, 293.66, 349.23, 440, 523.25, 440, 349.23, 293.66];
+      let noteIndex = 0;
+
+      function playNext() {
+        if (!Animations.musicPlaying) return;
+        const freq = notes[noteIndex % notes.length];
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.06, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+        osc.connect(gain);
+        gain.connect(Animations.musicGain);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.8);
+        noteIndex++;
+        Animations.musicOscillators.push({ osc, gain });
+        setTimeout(playNext, 900);
+      }
+      playNext();
+    } catch (e) { /* silent */ }
+  },
+
+  stopMusic() {
+    this.musicPlaying = false;
+    this.musicOscillators.forEach(o => {
+      try { o.osc.stop(); } catch (e) { /* */ }
+    });
+    this.musicOscillators = [];
+  },
+
+  toggleMusic() {
+    const btn = document.getElementById('music-toggle');
+    if (this.musicPlaying) {
+      this.stopMusic();
+      if (btn) btn.textContent = '\u266A';
+    } else {
+      this.startMusic();
+      if (btn) btn.textContent = '\u266B';
+    }
   },
 
   typeText(element, text, callback) {
@@ -40,10 +215,8 @@ const Animations = {
 
   confetti(count = 60) {
     const container = document.getElementById('confetti-container');
-    const colors = [
-      '#f8a5c2', '#d4a5f5', '#ffd6e0', '#ffb3c6',
-      '#c8b6ff', '#ffd6a5', '#a0c4ff', '#fdffb6'
-    ];
+    if (!container) return;
+    const colors = ['#f8a5c2', '#d4a5f5', '#ffd6e0', '#ffb3c6', '#c8b6ff', '#ffd6a5', '#a0c4ff', '#fdffb6'];
     const shapes = ['circle', 'square', 'triangle'];
 
     for (let i = 0; i < count; i++) {
@@ -80,11 +253,12 @@ const Animations = {
 
   heartRain(count = 40) {
     const container = document.getElementById('heart-rain-container');
+    if (!container) return;
     container.innerHTML = '';
     for (let i = 0; i < count; i++) {
       const heart = document.createElement('div');
       heart.className = 'heart-rain-piece';
-      heart.textContent = '\u2764';
+      heart.textContent = ['\u2764', '\uD83D\uDC9B', '\uD83D\uDC9C', '\uD83D\uDC9D'][Math.floor(Math.random() * 4)];
       heart.style.left = `${Math.random() * 100}%`;
       heart.style.fontSize = `${14 + Math.random() * 18}px`;
       heart.style.animationDuration = `${4 + Math.random() * 4}s`;
@@ -116,6 +290,24 @@ const Animations = {
     }
   },
 
+  spawnButterflies(count = 3) {
+    const container = document.getElementById('butterfly-container');
+    if (!container) return;
+    container.innerHTML = '';
+    for (let i = 0; i < count; i++) {
+      const b = document.createElement('div');
+      b.className = 'butterfly';
+      b.textContent = '\uD83E\uDD8B';
+      b.style.left = `${10 + Math.random() * 80}%`;
+      b.style.top = `${10 + Math.random() * 70}%`;
+      b.style.fontSize = `${18 + Math.random() * 12}px`;
+      b.style.animationDuration = `${8 + Math.random() * 6}s`;
+      b.style.animationDelay = `${i * 2}s`;
+      b.style.opacity = 0.5 + Math.random() * 0.4;
+      container.appendChild(b);
+    }
+  },
+
   initRippleButtons() {
     document.querySelectorAll('.ripple').forEach(btn => {
       btn.addEventListener('click', this.ripple);
@@ -125,20 +317,15 @@ const Animations = {
   animateLoadingBar(duration, callback) {
     const fill = document.querySelector('.loading-fill');
     if (!fill) { if (callback) callback(); return; }
-
     fill.style.width = '0%';
     const start = performance.now();
-
     function update(now) {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       fill.style.width = `${eased * 100}%`;
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      } else {
-        if (callback) callback();
-      }
+      if (progress < 1) requestAnimationFrame(update);
+      else if (callback) callback();
     }
     requestAnimationFrame(update);
   },
@@ -147,5 +334,31 @@ const Animations = {
     const box = document.getElementById('gift-box');
     if (!box) return;
     box.classList.add('opened');
+  },
+
+  transitionPage(fromPage, toPage, type) {
+    const fromEl = document.getElementById(fromPage);
+    const toEl = document.getElementById(toPage);
+    if (!fromEl || !toEl) return;
+
+    const types = {
+      slideLeft: { from: 'slideOutLeft', to: 'slideInRight' },
+      slideRight: { from: 'slideOutRight', to: 'slideInLeft' },
+      fade: { from: 'fadeOut', to: 'fadeIn' },
+      zoom: { from: 'zoomOut', to: 'zoomIn' },
+      heart: { from: 'heartShrink', to: 'heartGrow' }
+    };
+
+    const anim = types[type] || types.fade;
+
+    fromEl.classList.remove('active');
+    fromEl.style.animation = `${anim.from} 0.5s ease forwards`;
+    toEl.style.animation = `${anim.to} 0.5s ease forwards`;
+    toEl.classList.add('active');
+
+    setTimeout(() => {
+      fromEl.style.animation = '';
+      toEl.style.animation = '';
+    }, 600);
   }
 };

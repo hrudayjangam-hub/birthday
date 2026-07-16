@@ -8,16 +8,22 @@ const PageManager = {
     });
   },
 
-  show(pageId, animClass = 'fade-in') {
+  show(pageId, animClass = 'fade-in', transitionType) {
     const target = this.pages[pageId];
     if (!target) return;
 
-    if (this.currentPage) {
-      const prev = this.pages[this.currentPage];
-      prev.classList.remove('active');
+    const prevId = this.currentPage;
+    if (prevId === pageId) return;
+
+    if (transitionType && prevId && this.pages[prevId]) {
+      Animations.transitionPage(prevId, pageId, transitionType);
+    } else {
+      if (prevId && this.pages[prevId]) {
+        this.pages[prevId].classList.remove('active');
+      }
+      target.classList.add('active');
     }
 
-    target.classList.add('active');
     target.querySelectorAll(`.${animClass.split(' ')[0]}`).forEach(el => {
       el.style.animation = 'none';
       void el.offsetHeight;
@@ -123,6 +129,7 @@ const QuestionManager = {
   },
 
   handleYes() {
+    Animations.playHappySound();
     Animations.confetti(30);
     Animations.heartBurst();
     const q = this.questions[this.currentIndex];
@@ -360,6 +367,7 @@ const LetterManager = {
     this.nextBtn.style.display = 'none';
 
     this.envelope.onclick = () => {
+      Animations.playEnvelopeSound();
       this.envelope.classList.add('opened');
       setTimeout(() => {
         document.getElementById('letter-paper-slide').style.display = 'block';

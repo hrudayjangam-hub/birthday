@@ -222,3 +222,156 @@
   0% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
   100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3) rotate(360deg); }
 }
+
+/* ==================== PAGE TRANSITIONS ==================== */
+@keyframes slideOutLeft {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(-100%); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideOutRight {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(100%); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes zoomOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.5); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heartShrink {
+  from { opacity: 1; transform: scale(1) rotate(0deg); }
+  to { opacity: 0; transform: scale(0.1) rotate(180deg); }
+}
+
+@keyframes heartGrow {
+  from { opacity: 0; transform: scale(0.1) rotate(-180deg); }
+  to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* ==================== BUTTERFLY ==================== */
+#butterfly-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 55;
+  overflow: hidden;
+}
+
+.butterfly {
+  position: absolute;
+  will-change: transform;
+  animation: butterflyFloat linear infinite;
+  filter: drop-shadow(0 0 4px rgba(248, 165, 194, 0.3));
+}
+
+@keyframes butterflyFloat {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(30px, -40px) scale(1.05) rotate(10deg);
+  }
+  50% {
+    transform: translate(-20px, -80px) scale(0.95) rotate(-5deg);
+  }
+  75% {
+    transform: translate(-40px, -30px) scale(1.02) rotate(8deg);
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+/* ==================== MUSIC TOGGLE ==================== */
+.music-toggle-btn {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top, 12px));
+  right: max(12px, env(safe-area-inset-right, 12px));
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(248, 165, 194, 0.5);
+  background: rgba(255, 255, 255, 0.85);
+  color: #f8a5c2;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(248, 165, 194, 0.2);
+  line-height: 1;
+}
+
+.music-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 16px rgba(248, 165, 194, 0.35);
+  transform: scale(1.08);
+}
+
+.music-toggle-btn:active {
+  transform: scale(0.92);
+}
+
+.music-toggle-btn.playing {
+  border-color: #f8a5c2;
+  box-shadow: 0 0 20px rgba(248, 165, 194, 0.4);
+  animation: musicPulse 2s ease infinite;
+}
+
+@keyframes musicPulse {
+  0%, 100% { box-shadow: 0 2px 12px rgba(248, 165, 194, 0.3); }
+  50% { box-shadow: 0 0 24px rgba(248, 165, 194, 0.5), 0 0 40px rgba(248, 165, 194, 0.15); }
+}
+
+/* ==================== GIFT BOX OPENED ==================== */
+.gift-box.opened {
+  animation: giftReveal 0.6s ease forwards;
+}
+
+@keyframes giftReveal {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.2) rotate(-5deg); }
+  60% { transform: scale(1.1) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* ==================== LOADING BAR EASE ==================== */
+.loading-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #f8a5c2, #d4a5f5, #f8a5c2);
+  background-size: 200% 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  animation: loadingShimmer 1.5s ease infinite;
+}
+
+@keyframes loadingShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

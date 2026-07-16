@@ -14,7 +14,23 @@ const App = {
     this.setupQuestions();
     this.bindEvents();
 
+    Animations.spawnButterflies(4);
+    this.setupMusicToggle();
+
     await this.showLoading();
+  },
+
+  setupMusicToggle() {
+    const btn = document.getElementById('music-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      Animations.toggleMusic();
+      if (Animations.musicPlaying) {
+        btn.classList.add('playing');
+      } else {
+        btn.classList.remove('playing');
+      }
+    });
   },
 
   setupQuestions() {
@@ -44,6 +60,7 @@ const App = {
 
   bindEvents() {
     document.getElementById('start-btn').addEventListener('click', () => {
+      Animations.playHappySound();
       this.goToQuestion(0);
     });
 
@@ -72,13 +89,13 @@ const App = {
 
   goToQuestion(index) {
     QuestionManager.showQuestion(index);
-    PageManager.show('question-page', 'fade-in-scale');
+    PageManager.show('question-page', 'fade-in-scale', 'slideLeft');
     this.currentState = 'question';
   },
 
   goToPasscode() {
     PasscodeManager.clear();
-    PageManager.show('passcode-screen', 'fade-in-scale');
+    PageManager.show('passcode-screen', 'fade-in-scale', 'slideLeft');
     this.currentState = 'passcode';
   },
 
@@ -101,6 +118,7 @@ const App = {
   },
 
   onPasscodeSuccess() {
+    Animations.playUnlockSound();
     const page = PageManager.getPage('passcode-screen');
     const container = page.querySelector('.passcode-container');
     Animations.confetti(60);
@@ -112,7 +130,7 @@ const App = {
   },
 
   async goToGallery() {
-    PageManager.show('gallery-page', 'fade-in-down');
+    PageManager.show('gallery-page', 'fade-in-down', 'heart');
     this.currentState = 'gallery';
 
     try {
@@ -144,7 +162,7 @@ const App = {
   },
 
   async goToLetter() {
-    PageManager.show('letter-page', 'fade-in-scale');
+    PageManager.show('letter-page', 'fade-in-scale', 'slideLeft');
     this.currentState = 'letter';
 
     try {
@@ -170,7 +188,7 @@ const App = {
   },
 
   goToSurprise() {
-    PageManager.show('surprise-page', 'fade-in-scale');
+    PageManager.show('surprise-page', 'fade-in-scale', 'slideLeft');
     this.currentState = 'surprise';
     this.setupGiftBox();
   },
@@ -180,6 +198,7 @@ const App = {
     const reveal = document.getElementById('surprise-reveal');
 
     const handleClick = () => {
+      Animations.playGiftSound();
       Animations.animateGiftBox();
       Animations.confetti(120);
       Animations.heartBurst();
@@ -201,7 +220,7 @@ const App = {
   },
 
   goToFinal() {
-    PageManager.show('final-page', 'fade-in-down');
+    PageManager.show('final-page', 'fade-in-down', 'heart');
     this.currentState = 'final';
     Animations.heartRain(50);
     Animations.confetti(40);
@@ -223,7 +242,7 @@ const App = {
     document.getElementById('letter-paper-slide').style.display = 'none';
 
     QuestionManager.reset();
-    PageManager.show('welcome-screen', 'fade-in-down');
+    PageManager.show('welcome-screen', 'fade-in-down', 'slideLeft');
     this.currentState = 'welcome';
   }
 };
