@@ -27,7 +27,9 @@ const App = {
 
   startCountdown() {
     const bday = WEBSITE_DATA.birthday;
-    if (!bday || !bday.month || !bday.day) return;
+    if (!bday || !bday.month || !bday.day) { console.warn('Countdown: no birthday config'); return; }
+
+    console.log('Countdown started: month=' + bday.month + ' day=' + bday.day);
 
     function getNextBirthday() {
       const now = new Date();

@@ -522,17 +522,30 @@
 
 /* ==================== COUNTDOWN ==================== */
 .countdown {
+  margin: 16px 0;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, rgba(248, 165, 194, 0.2), rgba(212, 165, 245, 0.2));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: 1.5px solid rgba(248, 165, 194, 0.4);
+  box-shadow: 0 2px 12px rgba(248, 165, 194, 0.15);
+}
+
+.countdown-label-top {
+  font-size: clamp(11px, 2.8vw, 14px);
+  font-weight: 700;
+  color: #d6336c;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.countdown-inner {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  margin: 16px 0;
-  padding: 10px 16px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border-radius: 16px;
-  border: 1px solid rgba(248, 165, 194, 0.3);
 }
 
 .countdown-item {

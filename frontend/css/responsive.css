@@ -9,10 +9,12 @@
   .welcome-greeting { font-size: 19px; }
   .welcome-message { font-size: 12px; margin-bottom: 18px; }
   .countdown { gap: 3px; padding: 8px 10px; }
-  .countdown-item { min-width: 32px; }
-  .countdown-num { font-size: 16px; }
-  .countdown-label { font-size: 8px; }
-  .countdown-sep { font-size: 14px; padding-bottom: 10px; }
+  .countdown-inner { gap: 2px; }
+  .countdown-item { min-width: 28px; }
+  .countdown-num { font-size: 14px; }
+  .countdown-label { font-size: 7px; }
+  .countdown-sep { font-size: 12px; padding-bottom: 8px; }
+  .countdown-label-top { font-size: 10px; margin-bottom: 4px; }
   .heart-photo { width: 90px; height: 84px; }
 
   .btn { padding: 10px 22px; font-size: 13px; border-radius: 40px; }
@@ -89,7 +91,8 @@
   .welcome-greeting { font-size: 21px; }
   .welcome-message { font-size: 13px; margin-bottom: 22px; }
   .countdown { gap: 5px; padding: 8px 14px; }
-  .countdown-item { min-width: 38px; }
+  .countdown-inner { gap: 4px; }
+  .countdown-item { min-width: 36px; }
   .countdown-num { font-size: clamp(18px, 5vw, 24px); }
   .heart-photo { width: 100px; height: 92px; }
 
