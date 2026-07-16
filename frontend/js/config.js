@@ -4,5 +4,6 @@ const WEBSITE_DATA = {
   partnerName: 'Partner Name',
   password: '050805',
   backgroundMusic: 'assets/music/bg.mp3',
-  endingMessage: 'Thank You \u2764\uFE0F'
+  endingMessage: 'Thank You \u2764\uFE0F',
+  birthdayDate: '2026-07-16'
 };

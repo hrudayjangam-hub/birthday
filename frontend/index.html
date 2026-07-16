@@ -52,6 +52,9 @@
       <div class="floating-flower" style="left:75%;top:20%;font-size:20px">&#x1F33B;</div>
       <div class="floating-flower" style="left:50%;top:85%;font-size:18px">&#x1F490;</div>
     </div>
+    <div class="candle" style="left:8%;bottom:12%;animation-delay:0s"><div class="candle-flame"></div></div>
+    <div class="candle" style="left:88%;bottom:18%;animation-delay:0.8s"><div class="candle-flame"></div></div>
+    <div class="candle" style="left:45%;bottom:8%;animation-delay:1.6s"><div class="candle-flame"></div></div>
     <div class="page-svg-anim">
         <img src="assets/animations/welcome.svg" alt="" class="svg-character" loading="lazy">
       </div>
@@ -68,6 +71,15 @@
       </div>
       <h2 class="welcome-greeting">Hi &#x1F338;</h2>
       <p class="welcome-message">I made something special just for you.</p>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item"><span class="countdown-num" id="countdown-days">0</span><span class="countdown-label">Days</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item"><span class="countdown-num" id="countdown-hours">0</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item"><span class="countdown-num" id="countdown-mins">0</span><span class="countdown-label">Mins</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item"><span class="countdown-num" id="countdown-secs">0</span><span class="countdown-label">Secs</span></div>
+      </div>
       <button id="start-btn" class="btn btn-love glow-pulse ripple">&#x2728; Start Journey</button>
     </div>
   </section>
@@ -228,6 +240,7 @@
       <p class="envelope-hint">Click the envelope to open your letter &#x2728;</p>
       <div class="letter-paper-slide" id="letter-paper-slide" style="display:none">
         <div class="letter-paper-inner">
+          <div class="page-curl"></div>
           <div class="letter-stamp">&#x1F49D;</div>
           <h2 class="letter-title gradient-text" id="letter-title">A Letter For You</h2>
           <div class="letter-content" id="letter-content"></div>

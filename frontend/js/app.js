@@ -16,8 +16,37 @@ const App = {
 
     Animations.spawnButterflies(4);
     this.setupMusicToggle();
+    this.startCountdown();
+    Animations.initSparkleTrail();
 
     await this.showLoading();
+  },
+
+  startCountdown() {
+    const target = WEBSITE_DATA.birthdayDate ? new Date(WEBSITE_DATA.birthdayDate + 'T00:00:00') : null;
+    if (!target) return;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function update() {
+      const now = new Date();
+      const diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<div class="countdown-today">&#x1F389; Today! &#x1F389;</div>';
+        return;
+      }
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins = Math.floor((diff % 3600000) / 60000);
+      const secs = Math.floor((diff % 60000) / 1000);
+      document.getElementById('countdown-days').textContent = days;
+      document.getElementById('countdown-hours').textContent = pad(hours);
+      document.getElementById('countdown-mins').textContent = pad(mins);
+      document.getElementById('countdown-secs').textContent = pad(secs);
+    }
+
+    update();
+    setInterval(update, 1000);
   },
 
   setupMusicToggle() {

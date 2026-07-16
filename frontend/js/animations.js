@@ -336,6 +336,40 @@ const Animations = {
     box.classList.add('opened');
   },
 
+  initSparkleTrail() {
+    let last = 0;
+    const container = document.getElementById('sparkle-container') || (() => {
+      const el = document.createElement('div');
+      el.id = 'sparkle-container';
+      document.body.appendChild(el);
+      return el;
+    })();
+
+    const addSparkle = (x, y) => {
+      const s = document.createElement('div');
+      s.className = 'sparkle-trail-piece';
+      s.textContent = '\u2728';
+      s.style.left = `${x}px`;
+      s.style.top = `${y}px`;
+      s.style.fontSize = `${8 + Math.random() * 8}px`;
+      s.style.animationDuration = `${0.6 + Math.random() * 0.4}s`;
+      container.appendChild(s);
+      s.addEventListener('animationend', () => s.remove());
+    };
+
+    const handler = (e) => {
+      const now = Date.now();
+      if (now - last < 50) return;
+      last = now;
+      const touch = e.touches ? e.touches[0] : e;
+      if (!touch) return;
+      addSparkle(touch.clientX - 6, touch.clientY - 6);
+    };
+
+    document.addEventListener('mousemove', handler);
+    document.addEventListener('touchmove', handler, { passive: true });
+  },
+
   transitionPage(fromPage, toPage, type) {
     const fromEl = document.getElementById(fromPage);
     const toEl = document.getElementById(toPage);
