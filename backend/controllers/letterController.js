@@ -14,13 +14,15 @@ const getLetter = async (req, res) => {
 
 const seedLetter = async () => {
   try {
-    const count = await Letter.countDocuments();
-    if (count === 0) {
-      await Letter.create({
-        title: 'A Letter For You',
-        content: `Happy Birthday! 🎂\n\nOn this special day, I wanted to take a moment to tell you how much you mean to me.\n\nEvery moment spent with you is a treasure. Your smile lights up my world, and your laughter is the sweetest melody I've ever heard.\n\nYou are kind, you are beautiful, you are extraordinary. The world is a better place because you are in it.\n\nI hope today brings you as much joy as you bring to everyone around you. May your heart be filled with love, your eyes with wonder, and your soul with peace.\n\nHere's to many more beautiful moments together.\n\nWith all my love,\nYour Special Someone 💕`
-      });
-    }
+    await Letter.findOneAndUpdate(
+      {},
+      {
+        title: 'A Letter For You ❤️',
+        content: `Oye... Maa mana ee relationship lo edi nee first birthday...🤗\n\nNenu first time chusinapudu netho friendship chedam ani anukunna... But lopala ekkado bayam 🥹..\n\nAla atha marriage lo nenu chusi inka flat ipoya...\n\nAla naku antu oka age vachina ventane nee gurinchi telusukovdam start chesaa🫠...\n\nLike nee hobbies enti, neku em istam... Em istam ledhu.. school lo ela untavu, clg lo ela untavu ani ☺️...\n\nAla naku time teliyakunda 2 years nee gurinchi telusukunna 🫴🏻...\n\nAppude ayithe nenu babai valla house warming ceremony lo chusanooo appude nee direct ga matladi nv ante naku istam ani chudam ani anukunna... But bayam tho avvala kanisam nee insta id tesukoni ala naa feelings naku chpdam ani anukunna...\n\nAppudu ayithe nv naku nee insta id echavooo appudu naa happyness 🥳ki boundries lev...\n\nNetho ala communication start chedam anukunna time lo nv naku post pettavu inka ala netho communication start CHESI🤳.... Naa 2 years research ki result vachindhee😚...\n\nInka ala nenu netho close avadam start chesa🫂....\n\nElane netho appudu netho elagee untaa🫰🏻...\n\nI have one promise for you 💖\n\n*_PROMISE I WILL ALWAYS BE WITH YOU 💗🫂_*`
+      },
+      { upsert: true, new: true }
+    );
+    console.log('Letter seeded/updated');
   } catch (error) {
     console.error('Letter seed error:', error.message);
   }
