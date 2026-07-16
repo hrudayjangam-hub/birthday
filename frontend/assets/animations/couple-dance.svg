@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fce4ec" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#f3e5f5" stop-opacity="0.1"/>
+    </radialGradient>
+    <style>
+      @keyframes sway { 0%,100%{transform:rotate(-3deg)} 50%{transform:rotate(3deg)} }
+      @keyframes dressSway { 0%,100%{transform:rotate(-5deg)} 50%{transform:rotate(5deg)} }
+      @keyframes sparklePop { 0%,100%{opacity:0;transform:scale(0)} 50%{opacity:1;transform:scale(1)} }
+      @keyframes floatUp { 0%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(-30px)} }
+      .dancers { animation: sway 2s ease-in-out infinite; transform-origin: 100px 140px; }
+      .dress { animation: dressSway 2s ease-in-out infinite; transform-origin: 85px 125px; }
+      .sparkle-pop { animation: sparklePop 1.5s ease-in-out infinite; }
+      .float-up { animation: floatUp 2s ease-out infinite; }
+    </style>
+  </head>
+  <circle cx="100" cy="100" r="95" fill="url(#bgGlow)"/>
+  <g class="dancers">
+    <!-- Left person (in dress) -->
+    <circle cx="82" cy="72" r="11" fill="#ffd6e0"/>
+    <line x1="82" y1="83" x2="82" y2="110" stroke="#ffb3c6" stroke-width="3" stroke-linecap="round"/>
+    <path d="M75 95 Q60 115 68 130" stroke="#ffb3c6" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <g class="dress">
+      <path d="M70 110 Q65 125 60 140 L105 140 Q100 125 95 110 Z" fill="#f8a5c2" opacity="0.7"/>
+      <path d="M72 110 Q68 125 64 138 L100 138 Q96 125 92 110 Z" fill="#d4a5f5" opacity="0.4"/>
+    </g>
+    <!-- Right person -->
+    <circle cx="118" cy="74" r="11" fill="#ffd6e0"/>
+    <line x1="118" y1="85" x2="118" y2="112" stroke="#c8b6ff" stroke-width="3" stroke-linecap="round"/>
+    <line x1="118" y1="95" x2="132" y2="115" stroke="#c8b6ff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <line x1="118" y1="105" x2="106" y2="125" stroke="#c8b6ff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- Holding hands -->
+    <line x1="95" y1="88" x2="105" y2="88" stroke="#ffb3c6" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <!-- Musical notes floating up -->
+  <text x="135" y="50" font-size="12" class="float-up" fill="#d4a5f5" opacity="0.6">&#x266B;</text>
+  <text x="50" y="45" font-size="10" class="float-up" fill="#f8a5c2" opacity="0.5" style="animation-delay:0.5s">&#x266A;</text>
+  <text x="140" y="35" font-size="8" class="float-up" fill="#c8b6ff" opacity="0.4" style="animation-delay:1s">&#x266C;</text>
+  <!-- Sparkle pops -->
+  <text x="145" y="80" font-size="8" class="sparkle-pop" fill="#ffd6a5" style="animation-delay:0.2s">&#x2728;</text>
+  <text x="45" y="75" font-size="7" class="sparkle-pop" fill="#ffd6a5" style="animation-delay:0.7s">&#x2728;</text>
+  <!-- Floating hearts -->
+  <text x="60" y="30" font-size="10" class="beat-heart" fill="#f8a5c2" opacity="0.7">&#x2764;</text>
+  <text x="130" y="25" font-size="8" class="beat-heart" fill="#d4a5f5" opacity="0.6" style="animation-delay:0.4s">&#x2764;</text>
+</svg>

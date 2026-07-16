@@ -89,6 +89,26 @@ body {
   display: block;
 }
 
+.svg-character.second-svg {
+  position: absolute;
+  bottom: -20px;
+  right: -15px;
+  width: 60%;
+  height: 60%;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .svg-character.second-svg {
+    width: 45%;
+    height: 45%;
+    bottom: -10px;
+    right: -8px;
+    opacity: 0.35;
+  }
+}
+
 @media (max-width: 480px) {
   .page-svg-anim {
     width: clamp(60px, 18vw, 100px);

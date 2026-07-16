@@ -18,6 +18,9 @@ const App = {
     this.setupMusicToggle();
     this.startCountdown();
     Animations.initSparkleTrail();
+    Animations.startTwinklingStars(16);
+    Animations.startRosePetals(4000);
+    Animations.orbitHearts(5);
 
     await this.showLoading();
   },
@@ -242,6 +245,7 @@ const App = {
       Animations.animateGiftBox();
       Animations.confetti(120);
       Animations.heartBurst();
+      Animations.fireworks(4);
 
       setTimeout(() => {
         reveal.style.display = 'block';
@@ -264,6 +268,8 @@ const App = {
     this.currentState = 'final';
     Animations.heartRain(50);
     Animations.confetti(40);
+    Animations.fireworks(5);
+    Animations.rosePetals(8);
   },
 
   restart() {

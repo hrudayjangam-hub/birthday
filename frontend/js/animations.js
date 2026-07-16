@@ -394,5 +394,113 @@ const Animations = {
       fromEl.style.animation = '';
       toEl.style.animation = '';
     }, 600);
+  },
+
+  fireworks(count = 3) {
+    const colors = ['#ff6b9d', '#f8a5c2', '#ffd6a5', '#c8b6ff', '#a0c4ff', '#fdffb6', '#ff8fab', '#d4a5f5'];
+    for (let b = 0; b < count; b++) {
+      setTimeout(() => {
+        const x = 10 + Math.random() * 80;
+        const y = 10 + Math.random() * 50;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const particles = 16 + Math.floor(Math.random() * 16);
+        for (let i = 0; i < particles; i++) {
+          const p = document.createElement('div');
+          p.className = 'firework-particle';
+          const angle = (Math.PI * 2 * i) / particles;
+          const dist = 40 + Math.random() * 80;
+          const size = 3 + Math.random() * 5;
+          p.style.setProperty('--fx', `${Math.cos(angle) * dist}px`);
+          p.style.setProperty('--fy', `${Math.sin(angle) * dist}px`);
+          p.style.left = `${x}%`;
+          p.style.top = `${y}%`;
+          p.style.width = `${size}px`;
+          p.style.height = `${size}px`;
+          p.style.background = color;
+          p.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+          p.style.animationDuration = `${0.6 + Math.random() * 0.4}s`;
+          p.style.animationDelay = `${Math.random() * 0.1}s`;
+          document.body.appendChild(p);
+          p.addEventListener('animationend', () => p.remove());
+        }
+      }, b * 400);
+    }
+  },
+
+  rosePetals(count = 12) {
+    const container = document.getElementById('rose-petal-container') || (() => {
+      const el = document.createElement('div');
+      el.id = 'rose-petal-container';
+      document.body.appendChild(el);
+      return el;
+    })();
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'rose-petal';
+      p.textContent = '\uD83C\uDF39';
+      p.style.left = `${Math.random() * 100}%`;
+      p.style.fontSize = `${12 + Math.random() * 12}px`;
+      p.style.animationDuration = `${6 + Math.random() * 6}s`;
+      p.style.animationDelay = `${Math.random() * 8}s`;
+      p.style.opacity = 0.3 + Math.random() * 0.5;
+      p.style.transform = `rotate(${Math.random() * 360}deg)`;
+      container.appendChild(p);
+      p.addEventListener('animationend', () => p.remove());
+    }
+  },
+
+  startRosePetals(interval = 3000) {
+    this.rosePetals(3);
+    if (this._petalInterval) clearInterval(this._petalInterval);
+    this._petalInterval = setInterval(() => this.rosePetals(2), interval);
+  },
+
+  stopRosePetals() {
+    if (this._petalInterval) {
+      clearInterval(this._petalInterval);
+      this._petalInterval = null;
+    }
+  },
+
+  startTwinklingStars(count = 20) {
+    const container = document.getElementById('stars-container') || (() => {
+      const el = document.createElement('div');
+      el.id = 'stars-container';
+      document.body.appendChild(el);
+      return el;
+    })();
+    for (let i = 0; i < count; i++) {
+      const star = document.createElement('div');
+      star.className = 'twinkling-star';
+      star.textContent = '\u2B50';
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 60}%`;
+      star.style.fontSize = `${6 + Math.random() * 8}px`;
+      star.style.animationDuration = `${2 + Math.random() * 3}s`;
+      star.style.animationDelay = `${Math.random() * 4}s`;
+      star.style.opacity = 0;
+      container.appendChild(star);
+    }
+  },
+
+  orbitHearts(count = 6) {
+    const wrappers = document.querySelectorAll('.heart-image-wrapper');
+    wrappers.forEach((w, idx) => {
+      const existing = w.querySelector('.orbit-ring');
+      if (existing) existing.remove();
+      const ring = document.createElement('div');
+      ring.className = 'orbit-ring';
+      w.appendChild(ring);
+      for (let i = 0; i < count; i++) {
+        const h = document.createElement('div');
+        h.className = 'orbit-heart';
+        h.textContent = '\u2764';
+        h.style.animationDelay = `${(i / count) * 2}s`;
+        h.style.fontSize = `${8 + Math.random() * 6}px`;
+        const colors = ['#f8a5c2', '#ff6b9d', '#d4a5f5', '#ff8fab'];
+        h.style.color = colors[Math.floor(Math.random() * colors.length)];
+        ring.appendChild(h);
+      }
+    });
   }
 };

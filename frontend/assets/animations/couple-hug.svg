@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fce4ec" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#fce4ec" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+      @keyframes heartPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.12)} }
+      @keyframes sparkle { 0%,100%{opacity:0.3;transform:scale(0.8)} 50%{opacity:1;transform:scale(1.2)} }
+      .couple { animation: float 3s ease-in-out infinite; }
+      .heart { animation: heartPulse 1.5s ease infinite; transform-origin: center; }
+      .sparkle { animation: sparkle 2s ease-in-out infinite; }
+      .sparkle:nth-child(2) { animation-delay: 0.5s; }
+      .sparkle:nth-child(3) { animation-delay: 1s; }
+    </style>
+  </defs>
+  <circle cx="100" cy="120" r="90" fill="url(#glow)"/>
+  <g class="couple">
+    <!-- Left person -->
+    <circle cx="82" cy="78" r="14" fill="#ffd6e0"/>
+    <ellipse cx="82" cy="105" rx="18" ry="16" fill="#f8a5c2" opacity="0.6"/>
+    <line x1="82" y1="92" x2="82" y2="130" stroke="#ffb3c6" stroke-width="3" stroke-linecap="round"/>
+    <line x1="82" y1="100" x2="64" y2="115" stroke="#ffb3c6" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Right person -->
+    <circle cx="118" cy="78" r="14" fill="#ffd6e0"/>
+    <ellipse cx="118" cy="105" rx="18" ry="16" fill="#d4a5f5" opacity="0.6"/>
+    <line x1="118" y1="92" x2="118" y2="130" stroke="#c8b6ff" stroke-width="3" stroke-linecap="round"/>
+    <line x1="118" y1="100" x2="136" y2="115" stroke="#c8b6ff" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Hugging arms -->
+    <path d="M82 98 Q70 90 90 85" stroke="#ffb3c6" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M118 98 Q130 90 110 85" stroke="#c8b6ff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- Floating hearts -->
+  <text x="130" y="60" font-size="14" class="heart" fill="#f8a5c2">&#x2764;</text>
+  <text x="50" y="55" font-size="10" class="heart" fill="#d4a5f5" style="animation-delay:0.5s">&#x2764;</text>
+  <!-- Sparkles -->
+  <text x="145" y="85" font-size="8" class="sparkle" fill="#ffd6a5">&#x2728;</text>
+  <text x="40" y="80" font-size="6" class="sparkle" fill="#ffd6a5">&#x2728;</text>
+  <text x="100" y="40" font-size="7" class="sparkle" fill="#ffd6a5">&#x2728;</text>
+</svg>
