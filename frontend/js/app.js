@@ -23,13 +23,24 @@ const App = {
   },
 
   startCountdown() {
-    const target = WEBSITE_DATA.birthdayDate ? new Date(WEBSITE_DATA.birthdayDate + 'T00:00:00') : null;
-    if (!target) return;
+    const bday = WEBSITE_DATA.birthday;
+    if (!bday || !bday.month || !bday.day) return;
+
+    function getNextBirthday() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const next = new Date(year, bday.month - 1, bday.day);
+      if (next <= now) {
+        next.setFullYear(year + 1);
+      }
+      return next;
+    }
 
     function pad(n) { return String(n).padStart(2, '0'); }
 
     function update() {
       const now = new Date();
+      const target = getNextBirthday();
       const diff = target - now;
       if (diff <= 0) {
         document.getElementById('countdown').innerHTML = '<div class="countdown-today">&#x1F389; Today! &#x1F389;</div>';
