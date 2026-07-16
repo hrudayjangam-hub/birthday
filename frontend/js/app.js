@@ -16,53 +16,12 @@ const App = {
 
     Animations.spawnButterflies(4);
     this.setupMusicToggle();
-    this.startCountdown();
     Animations.initSparkleTrail();
     Animations.startTwinklingStars(16);
     Animations.startRosePetals(4000);
     Animations.orbitHearts(5);
 
     await this.showLoading();
-  },
-
-  startCountdown() {
-    const bday = WEBSITE_DATA.birthday;
-    if (!bday || !bday.month || !bday.day) { console.warn('Countdown: no birthday config'); return; }
-
-    console.log('Countdown started: month=' + bday.month + ' day=' + bday.day);
-
-    function getNextBirthday() {
-      const now = new Date();
-      const year = now.getFullYear();
-      const next = new Date(year, bday.month - 1, bday.day);
-      if (next <= now) {
-        next.setFullYear(year + 1);
-      }
-      return next;
-    }
-
-    function pad(n) { return String(n).padStart(2, '0'); }
-
-    function update() {
-      const now = new Date();
-      const target = getNextBirthday();
-      const diff = target - now;
-      if (diff <= 0) {
-        document.getElementById('countdown').innerHTML = '<div class="countdown-today">&#x1F389; Today! &#x1F389;</div>';
-        return;
-      }
-      const days = Math.floor(diff / 86400000);
-      const hours = Math.floor((diff % 86400000) / 3600000);
-      const mins = Math.floor((diff % 3600000) / 60000);
-      const secs = Math.floor((diff % 60000) / 1000);
-      document.getElementById('countdown-days').textContent = days;
-      document.getElementById('countdown-hours').textContent = pad(hours);
-      document.getElementById('countdown-mins').textContent = pad(mins);
-      document.getElementById('countdown-secs').textContent = pad(secs);
-    }
-
-    update();
-    setInterval(update, 1000);
   },
 
   setupMusicToggle() {
