@@ -149,6 +149,8 @@
   .welcome-content { padding: 30px 26px 36px; }
   .welcome-greeting { font-size: 24px; }
   .heart-photo { width: 120px; height: 110px; }
+  .countdown { margin: 14px 0; }
+  .countdown-num { font-size: clamp(22px, 5vw, 28px); }
 
   .question-card { padding: 36px 28px; }
   .question-text { font-size: 19px; }
@@ -172,6 +174,7 @@
   .welcome-greeting { font-size: 26px; }
   .welcome-message { font-size: 14px; }
   .heart-photo { width: 130px; height: 120px; }
+  .countdown { max-width: 340px; margin-left: auto; margin-right: auto; }
 
   .final-title { font-size: 30px; }
   .final-emoji { font-size: 56px; }
@@ -253,6 +256,13 @@
   .welcome-message { margin-bottom: 12px; font-size: 12px; }
   .heart-photo-wrapper { margin-bottom: 8px; }
   .floating-mini-heart { display: none; }
+  .countdown { margin: 8px 0; padding: 6px 10px; }
+  .countdown-inner { gap: 3px; }
+  .countdown-label-top { font-size: 10px; margin-bottom: 3px; }
+  .countdown-item { min-width: 28px; }
+  .countdown-num { font-size: 15px; }
+  .countdown-label { font-size: 7px; }
+  .countdown-sep { font-size: 13px; padding-bottom: 6px; }
 
   .passcode-container { padding: 12px 16px; }
   .passcode-lock { font-size: 28px; margin-bottom: 6px; }
@@ -328,6 +338,9 @@
 @media screen and (min-height: 501px) and (max-height: 600px) and (orientation: landscape) {
   .welcome-content { padding: 20px 28px; }
   .heart-photo { width: 90px; height: 84px; }
+  .countdown { margin: 10px 0; padding: 8px 12px; }
+  .countdown-num { font-size: 18px; }
+  .countdown-label { font-size: 8px; }
   .passcode-container { padding: 18px 22px; }
   .question-card { padding: 22px 24px; }
   .gift-box { width: 110px; height: 110px; }
@@ -393,6 +406,10 @@
   .welcome-content, .passcode-container, .final-container, .question-card { box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
   .letter-title, .page-title, .final-title, .surprise-title { -webkit-text-fill-color: #f0c8e0; }
   .floating-heart, .floating-sparkle, .floating-flower { opacity: 0.12; }
+  .countdown { background: linear-gradient(135deg, rgba(248,165,194,0.12), rgba(212,165,245,0.12)); border-color: rgba(248,165,194,0.2); }
+  .countdown-num { color: #ff8fab; }
+  .countdown-label { color: #c0a0c0; }
+  .countdown-label-top { color: #ff8fab; }
 
   @media (hover: none) and (pointer: coarse) {
     .btn-no:hover { background: rgba(255, 228, 236, 0.15); }
