@@ -1,8 +1,6 @@
 const Animations = {
-  audioCtx: null,
-  musicGain: null,
+  bgmAudio: null,
   musicPlaying: false,
-  musicOscillators: [],
 
   ripple(e) {
     const btn = e.currentTarget;
@@ -30,6 +28,14 @@ const Animations = {
       this.audioCtx.resume();
     }
     return this.audioCtx;
+  },
+
+  initBGM() {
+    if (this.bgmAudio) return;
+    this.bgmAudio = new Audio(WEBSITE_DATA.backgroundMusic);
+    this.bgmAudio.loop = true;
+    this.bgmAudio.volume = 0.3;
+    this.bgmAudio.preload = 'auto';
   },
 
   playChime(freq = 523.25, duration = 0.3, vol = 0.15) {
@@ -142,40 +148,22 @@ const Animations = {
   },
 
   startMusic() {
-    if (this.musicPlaying) return;
+    this.initBGM();
+    if (this.musicPlaying || !this.bgmAudio) return;
     this.musicPlaying = true;
     try {
-      const ctx = this.getAudioCtx();
-      const notes = [261.63, 329.63, 392, 523.25, 392, 329.63, 261.63, 329.63, 392, 523.25, 659.25, 523.25, 392, 329.63, 261.63, 293.66, 349.23, 440, 349.23, 293.66, 261.63, 293.66, 349.23, 440, 523.25, 440, 349.23, 293.66];
-      let noteIndex = 0;
-
-      function playNext() {
-        if (!Animations.musicPlaying) return;
-        const freq = notes[noteIndex % notes.length];
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.value = freq;
-        gain.gain.setValueAtTime(0.06, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
-        osc.connect(gain);
-        gain.connect(Animations.musicGain);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.8);
-        noteIndex++;
-        Animations.musicOscillators.push({ osc, gain });
-        setTimeout(playNext, 900);
-      }
-      playNext();
+      this.bgmAudio.play().catch(() => {});
     } catch (e) { /* silent */ }
   },
 
   stopMusic() {
     this.musicPlaying = false;
-    this.musicOscillators.forEach(o => {
-      try { o.osc.stop(); } catch (e) { /* */ }
-    });
-    this.musicOscillators = [];
+    if (this.bgmAudio) {
+      try {
+        this.bgmAudio.pause();
+        this.bgmAudio.currentTime = 0;
+      } catch (e) { /* silent */ }
+    }
   },
 
   toggleMusic() {
@@ -186,6 +174,12 @@ const Animations = {
     } else {
       this.startMusic();
       if (btn) btn.textContent = '\u266B';
+    }
+  },
+
+  setBGMVolume(vol) {
+    if (this.bgmAudio) {
+      this.bgmAudio.volume = Math.max(0, Math.min(1, vol));
     }
   },
 

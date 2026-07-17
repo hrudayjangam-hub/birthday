@@ -35,6 +35,16 @@ const App = {
         btn.classList.remove('playing');
       }
     });
+
+    document.addEventListener('click', () => {
+      if (!Animations.musicPlaying && !this._bgmStarted) {
+        this._bgmStarted = true;
+        Animations.initBGM();
+        Animations.startMusic();
+        btn.classList.add('playing');
+        btn.textContent = '\u266B';
+      }
+    }, { once: true });
   },
 
   setupQuestions() {
