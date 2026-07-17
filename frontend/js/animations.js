@@ -38,6 +38,12 @@ const Animations = {
     this.bgmAudio.preload = 'auto';
   },
 
+  resumeBGM() {
+    if (this.musicPlaying && this.bgmAudio && this.bgmAudio.paused) {
+      this.bgmAudio.play().catch(() => {});
+    }
+  },
+
   playChime(freq = 523.25, duration = 0.3, vol = 0.15) {
     try {
       const ctx = this.getAudioCtx();
@@ -151,9 +157,9 @@ const Animations = {
     this.initBGM();
     if (this.musicPlaying || !this.bgmAudio) return;
     this.musicPlaying = true;
-    try {
-      this.bgmAudio.play().catch(() => {});
-    } catch (e) { /* silent */ }
+    this.bgmAudio.play().catch(() => {
+      this.musicPlaying = false;
+    });
   },
 
   stopMusic() {

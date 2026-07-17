@@ -28,6 +28,10 @@ const App = {
     const btn = document.getElementById('music-toggle');
     if (!btn) return;
     btn.addEventListener('click', () => {
+      if (this._startingBGM) {
+        this._startingBGM = false;
+        return;
+      }
       Animations.toggleMusic();
       if (Animations.musicPlaying) {
         btn.classList.add('playing');
@@ -36,9 +40,12 @@ const App = {
       }
     });
 
-    document.addEventListener('click', () => {
+    document.addEventListener('click', (e) => {
       if (!Animations.musicPlaying && !this._bgmStarted) {
         this._bgmStarted = true;
+        if (e.target === btn || btn.contains(e.target)) {
+          this._startingBGM = true;
+        }
         Animations.initBGM();
         Animations.startMusic();
         btn.classList.add('playing');
