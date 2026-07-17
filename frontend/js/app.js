@@ -21,6 +21,11 @@ const App = {
     Animations.startRosePetals(4000);
     Animations.orbitHearts(5);
 
+    Animations.initBGM();
+    Animations.startMusic();
+    const btn = document.getElementById('music-toggle');
+    if (btn) { btn.classList.add('playing'); btn.textContent = '\u266B'; }
+
     await this.showLoading();
   },
 
@@ -28,10 +33,6 @@ const App = {
     const btn = document.getElementById('music-toggle');
     if (!btn) return;
     btn.addEventListener('click', () => {
-      if (this._startingBGM) {
-        this._startingBGM = false;
-        return;
-      }
       Animations.toggleMusic();
       if (Animations.musicPlaying) {
         btn.classList.add('playing');
@@ -39,19 +40,6 @@ const App = {
         btn.classList.remove('playing');
       }
     });
-
-    document.addEventListener('click', (e) => {
-      if (!Animations.musicPlaying && !this._bgmStarted) {
-        this._bgmStarted = true;
-        if (e.target === btn || btn.contains(e.target)) {
-          this._startingBGM = true;
-        }
-        Animations.initBGM();
-        Animations.startMusic();
-        btn.classList.add('playing');
-        btn.textContent = '\u266B';
-      }
-    }, { once: true });
   },
 
   setupQuestions() {
