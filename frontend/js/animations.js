@@ -157,9 +157,6 @@ const Animations = {
     this.initBGM();
     if (this.musicPlaying || !this.bgmAudio) return;
     this.musicPlaying = true;
-    if (this.bgmAudio.paused) {
-      this.bgmAudio.currentTime = 60;
-    }
     this.bgmAudio.play().catch(() => {
       this.musicPlaying = false;
     });
