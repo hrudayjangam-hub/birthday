@@ -1,4 +1,4 @@
-const CACHE = 'our-story-v1';
+const CACHE = 'our-story-v2';
 const URLS = [
   '/',
   '/index.html',
@@ -10,7 +10,7 @@ const URLS = [
   '/js/animations.js',
   '/js/config.js',
   '/manifest.json',
-  '/assets/music/bg.m4a'
+  '/assets/music/bg.webm'
 ];
 
 self.addEventListener('install', e => {

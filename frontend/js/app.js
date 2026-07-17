@@ -21,11 +21,7 @@ const App = {
     Animations.startRosePetals(4000);
     Animations.orbitHearts(5);
 
-    Animations.initBGM();
-    Animations.startMusic();
-    const btn = document.getElementById('music-toggle');
-    if (btn) { btn.classList.add('playing'); btn.textContent = '\u266B'; }
-
+    this.autoStartBGM();
     await this.showLoading();
   },
 
@@ -40,6 +36,24 @@ const App = {
         btn.classList.remove('playing');
       }
     });
+  },
+
+  autoStartBGM() {
+    const btn = document.getElementById('music-toggle');
+    Animations.initBGM();
+    Animations.startMusic();
+    if (btn) { btn.classList.add('playing'); btn.textContent = '\u266B'; }
+
+    const tryPlay = () => {
+      if (!Animations.musicPlaying && Animations.bgmAudio) {
+        Animations.startMusic();
+        if (btn) btn.classList.add('playing');
+      }
+    };
+
+    document.addEventListener('touchstart', tryPlay, { once: true });
+    document.addEventListener('click', tryPlay, { once: true });
+    document.addEventListener('keydown', tryPlay, { once: true });
   },
 
   setupQuestions() {
