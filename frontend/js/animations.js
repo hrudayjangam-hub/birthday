@@ -33,9 +33,15 @@ const Animations = {
   initBGM() {
     if (this.bgmAudio) return;
     this.bgmAudio = new Audio(WEBSITE_DATA.backgroundMusic);
-    this.bgmAudio.loop = true;
+    this.bgmAudio.loop = false;
     this.bgmAudio.volume = 0.3;
     this.bgmAudio.preload = 'auto';
+    this.bgmAudio.currentTime = 12;
+    this.bgmAudio.addEventListener('timeupdate', () => {
+      if (this.bgmAudio && this.bgmAudio.currentTime >= 28) {
+        this.bgmAudio.currentTime = 12;
+      }
+    });
   },
 
   resumeBGM() {
@@ -167,7 +173,7 @@ const Animations = {
     if (this.bgmAudio) {
       try {
         this.bgmAudio.pause();
-        this.bgmAudio.currentTime = 0;
+        this.bgmAudio.currentTime = 12;
       } catch (e) { /* silent */ }
     }
   },
