@@ -1,4 +1,4 @@
-const CACHE = 'our-story-v2';
+const CACHE = 'our-story-v3';
 const URLS = [
   '/',
   '/index.html',
