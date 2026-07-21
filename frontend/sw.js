@@ -10,7 +10,7 @@ const URLS = [
   '/js/animations.js',
   '/js/config.js',
   '/manifest.json',
-  '/assets/music/bg.webm'
+  '/assets/music/bg.mp3'
 ];
 
 self.addEventListener('install', e => {
