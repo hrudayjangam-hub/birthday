@@ -36,12 +36,7 @@ const Animations = {
     this.bgmAudio.loop = false;
     this.bgmAudio.volume = 0.3;
     this.bgmAudio.preload = 'auto';
-    this.bgmAudio.currentTime = 14;
-    this.bgmAudio.addEventListener('timeupdate', () => {
-      if (this.bgmAudio && this.bgmAudio.currentTime >= 28) {
-        this.bgmAudio.currentTime = 14;
-      }
-    });
+    this.bgmAudio.currentTime = 72;
   },
 
   resumeBGM() {
@@ -173,7 +168,7 @@ const Animations = {
     if (this.bgmAudio) {
       try {
         this.bgmAudio.pause();
-        this.bgmAudio.currentTime = 14;
+        this.bgmAudio.currentTime = 72;
       } catch (e) { /* silent */ }
     }
   },
