@@ -740,6 +740,14 @@ body {
   transform: scale(1.12);
 }
 
+.heart-bottom .heart-image img {
+  transform: scale(0.78);
+}
+
+.heart-bottom:hover .heart-image img {
+  transform: scale(0.92);
+}
+
 .heart-glow {
   position: absolute;
   top: -10%;

@@ -32,11 +32,17 @@ const Animations = {
 
   initBGM() {
     if (this.bgmAudio) return;
-    this.bgmAudio = new Audio(WEBSITE_DATA.backgroundMusic);
-    this.bgmAudio.loop = false;
+    const cacheBuster = '?v=' + Date.now();
+    this.bgmAudio = new Audio(WEBSITE_DATA.backgroundMusic + cacheBuster);
     this.bgmAudio.volume = 0.3;
     this.bgmAudio.preload = 'auto';
     this.bgmAudio.currentTime = 72;
+    this.bgmAudio.addEventListener('ended', () => {
+      this.bgmAudio.currentTime = 72;
+      if (this.musicPlaying) {
+        this.bgmAudio.play().catch(() => {});
+      }
+    });
   },
 
   resumeBGM() {
