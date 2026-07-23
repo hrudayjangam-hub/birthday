@@ -710,10 +710,10 @@ body {
   max-width: 160px;
   height: 34.1vw;
   max-height: 150px;
+  clip-path: path('M80,22 C80,22 68,0 40,0 C12,0 0,18 0,36 C0,64 28,86 80,118 C132,86 160,64 160,36 C160,18 148,0 120,0 C92,0 80,22 80,22 Z');
   overflow: hidden;
   position: relative;
   background: linear-gradient(135deg, #ffe0ec, #ffb6c1);
-  border-radius: 16px;
   box-shadow: 0 0 0 3px rgba(255,255,255,0.9), 0 0 20px rgba(248,165,194,0.3), 0 8px 24px rgba(0,0,0,0.12);
   animation: heartFloat 4s ease infinite;
 }
@@ -732,7 +732,7 @@ body {
 .heart-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.5s ease;
 }
 
