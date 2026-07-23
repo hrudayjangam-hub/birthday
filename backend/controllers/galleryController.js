@@ -11,18 +11,26 @@ const getGallery = async (req, res) => {
 
 const seedGallery = async () => {
   try {
-    const count = await Gallery.countDocuments();
-    if (count === 0) {
-      const items = [];
-      for (let i = 1; i <= 9; i++) {
-        items.push({
-          imageUrl: `https://picsum.photos/seed/gallery${i}/600/600`,
-          caption: `Memory ${i}`,
-          order: i
-        });
+    await Gallery.deleteMany({});
+    const items = [
+      {
+        imageUrl: '/assets/images/birthday1.jpeg',
+        caption: 'Happy Birthday! 💖',
+        order: 1
+      },
+      {
+        imageUrl: '/assets/images/birthdat2.jpeg',
+        caption: 'Special Moments ✨',
+        order: 2
+      },
+      {
+        imageUrl: '/assets/images/middle-pic.jpeg',
+        caption: 'You & Me 💕',
+        order: 3
       }
-      await Gallery.insertMany(items);
-    }
+    ];
+    await Gallery.insertMany(items);
+    console.log('Gallery seeded with local images.');
   } catch (error) {
     console.error('Gallery seed error:', error.message);
   }
